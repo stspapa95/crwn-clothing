@@ -1,13 +1,38 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Gotham -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@font-face {
+    font-family: "Chronicle Light";
+    src: url("/public/fonts/ChronicleDisp-Light.otf") format("opentype");
+}
+@font-face {
+    font-family: "Chronicle Bold";
+    src: url("/public/fonts/ChronicleDisp-Bold.otf") format("opentype");
+}
+@font-face {
+    font-family: "Gotham Book";
+    src: url("/public/fonts/Gotham-Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Gotham Light";
+    src: url("/public/fonts/Gotham-Light.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Gotham Bold";
+    src: url("/public/fonts/Gotham-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Gotham Black";
+    src: url("/public/fonts/Gotham-Black.otf") format("opentype");
 }
