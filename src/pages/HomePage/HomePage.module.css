@@ -1,3 +1,23 @@
 .container {
     padding: 20px 80px;
 }
+
+.menuItem {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #808080;
+    height: 240px;
+}
+
+.button {
+    font-family: Gotham Book, sans-serif;
+    color: #2D2D2D;
+    background-color: #FFF;
+}
+
+.button:hover {
+    background-color: #ababab;
+}
