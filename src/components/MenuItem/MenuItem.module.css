@@ -1,0 +1,19 @@
+.container {
+    overflow: hidden;
+    border: 2px solid #808080;
+}
+
+.menuItem {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    overflow: hidden;
+}
+
+.menuItem:hover {
+   transition: all 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+   transform: scale(1.1);
+}
