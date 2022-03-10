@@ -1,9 +1,15 @@
 import React from 'react';
+import {useNavigate} from "react-router";
 import MainButton from "../@core/MainButton/MainButton";
 import Text from "../@core/Text/Text";
 import classes from "./MenuItem.module.css";
 
-function MenuItem({title, image, large}) {
+function MenuItem({title, image, large, link}) {
+
+   const navigate = useNavigate();
+   const handleNavigation = () => {
+      navigate(link)
+   }
 
    return (
       <div className={classes.container}>
@@ -15,7 +21,7 @@ function MenuItem({title, image, large}) {
             height: large ? '380px' : '240px',
          }}>
             <Text>{title}</Text>
-            <MainButton title={"SHOP NOW"}/>
+            <MainButton title={"SHOP NOW"} onClick={handleNavigation}/>
          </div>
       </div>
    )

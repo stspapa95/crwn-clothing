@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button, styled} from "@mui/material";
 
-function MainButton({title}) {
+function MainButton({title, onClick}) {
 
    const MyButton = styled(Button)( {
       color:'#2D2D2D',
@@ -14,7 +14,7 @@ function MainButton({title}) {
       }
    })
    return (
-      <MyButton disableRipple>{title}</MyButton>
+      <MyButton disableRipple onClick={onClick}>{title}</MyButton>
    )
 }
 

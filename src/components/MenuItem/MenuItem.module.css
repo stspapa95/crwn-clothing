@@ -9,11 +9,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transition: all 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+    transition: all 5.5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     overflow: hidden;
 }
 
 .menuItem:hover {
-   transition: all 2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+   transition: all 5.5s cubic-bezier(0.25, 0.45, 0.45, 0.95);
    transform: scale(1.1);
 }
