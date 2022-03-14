@@ -22,14 +22,14 @@ export const productTypes = [
 export const gender = [
    {
       id: 1,
+      title:'WOMEN',
+      image: 'https://i.ibb.co/GCCdy8t/womens.png',
+      url: '/shop/women'
+   },
+   {
+      id: 2,
       title:'MEN',
       image: 'https://i.ibb.co/R70vBrQ/men.png',
       url: '/shop/men'
    },
-   {
-      id: 2,
-      title:'WOMEN',
-      image: 'https://i.ibb.co/GCCdy8t/womens.png',
-      url: '/shop/women'
-   }
 ];
