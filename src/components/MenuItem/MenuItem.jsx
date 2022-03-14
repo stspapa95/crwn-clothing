@@ -21,7 +21,7 @@ function MenuItem({title, image, large, link}) {
             height: large ? '380px' : '240px',
          }}>
             <Text>{title}</Text>
-            <MainButton title={"SHOP NOW"} onClick={handleNavigation}/>
+            <MainButton title={"SHOP NOW"} onClick={handleNavigation} background={'rgb(178, 175, 172)'}/>
          </div>
       </div>
    )
