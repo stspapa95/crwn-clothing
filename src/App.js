@@ -9,8 +9,8 @@ function App() {
       <div style={{padding: '30px 60px'}}>
          <Header />
          <Routes>
-            <Route path="/" exact element={<HomePage/>} />
-            <Route path="/shop" exact element ={<ShopPage />} />
+            <Route path="/" element={<HomePage/>} />
+            <Route path="/shop" element ={<ShopPage />} />
          </Routes>
       </div>
    );
