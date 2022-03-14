@@ -6,7 +6,7 @@ import {productTypes, gender} from './data';
 function HomePage() {
 
    return (
-      <Box style={{padding: '20px 80px'}}>
+      <Box>
          <Grid container spacing={1}>
             {productTypes.map((product) => <Grid item lg={4} md={4} key={product.id}>
                <MenuItem title={product.title} image={product.image} link={product.url}/>

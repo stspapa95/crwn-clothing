@@ -5,7 +5,7 @@ import PreviewCollection from "../../components/PreviewCollection/PreviewCollect
 
 function ShopPage() {
    return (
-      <Box style={{padding:'20px 60px'}}>
+      <Box>
          {collection.map(({id, title, items})=> <Box key={id} mb={5}>
             <PreviewCollection title={title} items={items} />
          </Box>)}
