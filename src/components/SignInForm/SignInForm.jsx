@@ -1,6 +1,7 @@
 import React from "react";
 import {
   Box,
+  Button,
   Card,
   CardContent,
   Checkbox,
@@ -12,6 +13,7 @@ import {
 import BasicTextField from "../@core/BasicTextField/BasicTextField";
 import MainButton from "../@core/MainButton/MainButton";
 import { Link } from "react-router-dom";
+import { signInWithGooglePopup } from "../../utilities/firebase/firebase";
 
 const StyledCheckBox = styled(Checkbox)({
   "&.MuiCheckbox-root": {
@@ -20,6 +22,11 @@ const StyledCheckBox = styled(Checkbox)({
 });
 
 function SignInForm({ setAnchorEl }) {
+  const loginGoogleUser = async () => {
+    const response = await signInWithGooglePopup();
+    if (response) setAnchorEl(null);
+  };
+
   return (
     <Card style={{ width: 350, height: "100%" }}>
       <CardContent style={{ padding: "16px 24px 16px 24px" }}>
@@ -64,14 +71,26 @@ function SignInForm({ setAnchorEl }) {
               }
             />
           </Grid>
-          <Grid item>
-            <MainButton
-              title={"Sign In"}
-              fullWidth
-              variant={"contained"}
-              background={"#FFD700"}
-              backgroundHover={"rgb(255, 167, 0)"}
-            />
+          <Grid item container display={"flex"} spacing={1}>
+            <Grid item sm={6} md={6}>
+              <MainButton
+                title={"Sign In"}
+                fullWidth
+                variant={"contained"}
+                background={"#FFD700"}
+                backgroundHover={"rgb(255, 167, 0)"}
+              />
+            </Grid>
+            <Grid item sm={6} md={6}>
+              <Button
+                variant={"contained"}
+                fullWidth
+                style={{ borderRadius: "1px", padding: "8px 16px" }}
+                onClick={loginGoogleUser}
+              >
+                Google
+              </Button>
+            </Grid>
           </Grid>
           <Grid item>
             <Typography style={{ fontSize: 14, fontFamily: "Gotham Book" }}>
