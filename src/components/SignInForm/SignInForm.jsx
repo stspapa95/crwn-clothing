@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import {
   Box,
   Button,
@@ -10,10 +12,11 @@ import {
   styled,
   Typography,
 } from "@mui/material";
+
 import BasicTextField from "../@core/BasicTextField/BasicTextField";
 import MainButton from "../@core/MainButton/MainButton";
-import { Link } from "react-router-dom";
 import { signInWithGooglePopup } from "../../utilities/firebase/firebase";
+import { ReactComponent as GoogleIcon } from "../../assets/24 - google icon.svg";
 
 const StyledCheckBox = styled(Checkbox)({
   "&.MuiCheckbox-root": {
@@ -71,26 +74,31 @@ function SignInForm({ setAnchorEl }) {
               }
             />
           </Grid>
-          <Grid item container display={"flex"} spacing={1}>
-            <Grid item sm={6} md={6}>
-              <MainButton
-                title={"Sign In"}
-                fullWidth
-                variant={"contained"}
-                background={"#FFD700"}
-                backgroundHover={"rgb(255, 167, 0)"}
-              />
-            </Grid>
-            <Grid item sm={6} md={6}>
-              <Button
-                variant={"contained"}
-                fullWidth
-                style={{ borderRadius: "1px", padding: "8px 16px" }}
-                onClick={loginGoogleUser}
-              >
-                Google
-              </Button>
-            </Grid>
+          <Grid item>
+            <MainButton
+              title={"Sign In"}
+              fullWidth
+              variant={"contained"}
+              background={"#FFD700"}
+              backgroundHover={"rgb(255, 167, 0)"}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              variant={"contained"}
+              fullWidth
+              style={{
+                borderRadius: "1px",
+                padding: "8px 16px",
+                fontFamily: "Gotham Book, sans-serif",
+                backgroundColor: "#fff",
+                color: "#2D2D2D",
+              }}
+              onClick={loginGoogleUser}
+              startIcon={<GoogleIcon />}
+            >
+              SIGN IN WITH GOOGLE
+            </Button>
           </Grid>
           <Grid item>
             <Typography style={{ fontSize: 14, fontFamily: "Gotham Book" }}>
@@ -98,12 +106,12 @@ function SignInForm({ setAnchorEl }) {
               <Link
                 to={"/sign-up"}
                 style={{
-                  fontFamily: "Gotham Bold",
+                  fontFamily: "Gotham Book",
                   color: "#2D2D2D",
                   textDecoration: "none",
                 }}
               >
-                <span onClick={() => setAnchorEl(null)}>SIGN UP.</span>
+                <span style={{fontWeight: 'bold'}} onClick={() => setAnchorEl(null)}>SIGN UP.</span>
               </Link>
             </Typography>
           </Grid>

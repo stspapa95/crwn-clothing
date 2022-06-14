@@ -1,7 +1,9 @@
 import React from 'react';
 import {useNavigate} from "react-router";
+
 import MainButton from "../@core/MainButton/MainButton";
 import Text from "../@core/Text/Text";
+
 import classes from "./MenuItem.module.css";
 
 function MenuItem({title, image, large, link}) {

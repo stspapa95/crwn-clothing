@@ -1,12 +1,13 @@
 import React, { useState } from "react";
+
 import { Box, IconButton, Popover } from "@mui/material";
+import MainButton from "../@core/MainButton/MainButton";
+import SignInForm from "../SignInForm/SignInForm";
 import { Link } from "react-router-dom";
 
 import bag from "../../assets/24 - Bag.svg";
 import logo from "../../assets/crown.svg";
 import classes from "./header.module.css";
-import MainButton from "../@core/MainButton/MainButton";
-import SignInForm from "../SignInForm/SignInForm";
 
 function Header() {
   const [anchorEl, setAnchorEl] = useState(null);

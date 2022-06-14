@@ -1,7 +1,7 @@
 import React from 'react';
-import {SHOP_DATA as collection}  from "./shopData";
 import {Box} from "@mui/material";
 import PreviewCollection from "../../components/PreviewCollection/PreviewCollection";
+import {SHOP_DATA as collection}  from "./shopData";
 
 function ShopPage() {
    return (
