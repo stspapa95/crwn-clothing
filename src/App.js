@@ -1,6 +1,7 @@
 import React from "react";
 import HomePage from "./pages/homepage";
 import ShopPage from "./pages/shop";
+import SignUpPage from './pages/sign-up/';
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/shop" element={<ShopPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
       </Routes>
     </div>
   );
