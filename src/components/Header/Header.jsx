@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import { Box, IconButton, Popover } from "@mui/material";
 import Button from "../@core/Button/Button";
 import SignInForm from "../SignInForm/SignInForm";
 import { Link } from "react-router-dom";
 
-import bag from "../../assets/24 - Bag.svg";
-import logo from "../../assets/crown.svg";
-import classes from "./header.module.css";
+import cartLogo from "../../assets/24 - Bag.svg";
+import crownLogo from "../../assets/crown.svg";
+import classes from "./Header.module.css";
 
 function Header() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const ref = useRef();
 
-  const handleClick = (e) => {
-    setAnchorEl(e.currentTarget);
+  const handleOpen = () => {
+    setAnchorEl(ref.current);
   };
 
   const handleClose = () => {
@@ -25,8 +26,8 @@ function Header() {
       <Link to={"/"}>
         <Box>
           <img
-            src={logo}
-            alt={""}
+            src={crownLogo}
+            alt={"Crown Clothing"}
             style={{ paddingLeft: 20, cursor: "pointer" }}
           />
         </Box>
@@ -49,12 +50,14 @@ function Header() {
           padding={"0 20px 0 20px"}
           backgroundHover={"rgba(45, 45, 45, 0.04)"}
         />
-        <Button
-          title={"Sign in"}
-          padding={"0 20px 0 20px"}
-          backgroundHover={"rgba(45, 45, 45, 0.04)"}
-          onClick={handleClick}
-        />
+        <Box ref={ref}>
+          <Button
+            title={"Sign in"}
+            padding={"0 20px 0 20px"}
+            backgroundHover={"rgba(45, 45, 45, 0.04)"}
+            onClick={handleOpen}
+          />
+        </Box>
         <Popover
           open={Boolean(anchorEl)}
           anchorEl={anchorEl}
@@ -70,11 +73,9 @@ function Header() {
         >
           <SignInForm setAnchorEl={setAnchorEl} />
         </Popover>
-        <Box style={{paddingLeft: 12}}>
-          <IconButton>
-            <img src={bag} alt={""} style={{ cursor: "pointer" }} />
-          </IconButton>
-        </Box>
+        <IconButton style={{paddingLeft: 12}}>
+          <img src={cartLogo} alt={"Cart"} style={{ cursor: "pointer" }} />
+        </IconButton>
       </Box>
     </Box>
   );

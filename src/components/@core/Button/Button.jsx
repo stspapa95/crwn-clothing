@@ -13,7 +13,6 @@ function Button({
   variant,
   startIcon,
 }) {
-
   const StyledButton = styled(MuiButton)({
     color: color,
     backgroundColor: backgroundColor,

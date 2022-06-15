@@ -31,7 +31,7 @@ function SignInForm({ setAnchorEl }) {
 
   return (
     <Card style={{ width: 350, height: "100%" }}>
-      <CardContent style={{ padding: "16px 24px 16px 24px" }}>
+      <CardContent style={{ padding: "16px 24px" }}>
         <Typography
           style={{
             fontFamily: "Chronicle Light",
