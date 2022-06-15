@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Box, IconButton, Popover } from "@mui/material";
-import MainButton from "../@core/MainButton/MainButton";
+import Button from "../@core/Button/Button";
 import SignInForm from "../SignInForm/SignInForm";
 import { Link } from "react-router-dom";
 
@@ -38,44 +38,42 @@ function Header() {
         style={{ marginLeft: "auto" }}
       >
         <Link to={"/shop"} className={classes.link}>
-          <MainButton
-            fontSize={"13px"}
+          <Button
+            title={"Shop"}
             padding={"0 20px 0 20px"}
             backgroundHover={"rgba(45, 45, 45, 0.04)"}
-            title={"Shop"}
           />
         </Link>
-        <MainButton
-          fontSize={"13px"}
-          padding={"0 20px 0 20px"}
-          backgroundHover={"rgba(45, 45, 45, 0.04)"}
+        <Button
           title={"Contact"}
-        />
-        <MainButton
-          fontSize={"13px"}
           padding={"0 20px 0 20px"}
           backgroundHover={"rgba(45, 45, 45, 0.04)"}
-          title={"Sign in"}
         />
-        <Box style={{ paddingLeft: 20 }}>
-          <IconButton onClick={handleClick}>
+        <Button
+          title={"Sign in"}
+          padding={"0 20px 0 20px"}
+          backgroundHover={"rgba(45, 45, 45, 0.04)"}
+          onClick={handleClick}
+        />
+        <Popover
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          <SignInForm setAnchorEl={setAnchorEl} />
+        </Popover>
+        <Box style={{paddingLeft: 12}}>
+          <IconButton>
             <img src={bag} alt={""} style={{ cursor: "pointer" }} />
           </IconButton>
-          <Popover
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <SignInForm setAnchorEl={setAnchorEl}/>
-          </Popover>
         </Box>
       </Box>
     </Box>

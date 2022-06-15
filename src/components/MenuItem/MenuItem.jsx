@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router";
 
-import MainButton from "../@core/MainButton/MainButton";
+import Button from "../@core/Button/Button";
 import Text from "../@core/Text/Text";
 
 import classes from "./MenuItem.module.css";
@@ -23,7 +23,7 @@ function MenuItem({title, image, large, link}) {
             height: large ? '380px' : '240px',
          }}>
             <Text>{title}</Text>
-            <MainButton title={"SHOP NOW"} onClick={handleNavigation} backgroundHover={'rgb(178, 175, 172)'}/>
+            <Button title={"SHOP NOW"} onClick={handleNavigation} backgroundHover={'rgb(178, 175, 172)'}/>
          </div>
       </div>
    )

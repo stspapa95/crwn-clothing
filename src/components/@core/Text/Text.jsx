@@ -5,10 +5,10 @@ function Text({children}) {
    return (
       <Typography
          style={{
-            fontFamily: 'Gotham Bold',
-            marginBottom: '10px',
+            fontFamily: 'Gotham Bold, sans-serif',
+            marginBottom: 10,
             color: '#d3d3d3',
-            fontSize:'18px'
+            fontSize: 18
          }}>
          {children}
       </Typography>

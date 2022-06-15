@@ -18,9 +18,9 @@ const StyledTextField = styled(TextField)({
 function BasicTextField({
   label,
   variant,
-  fullWidth = false,
-  placeHolder = "",
-  adornment = false,
+  fullWidth,
+  placeHolder,
+  adornment
 }) {
   return (
     <StyledTextField
@@ -58,6 +58,12 @@ function BasicTextField({
       }}
     />
   );
+}
+
+BasicTextField.defaultProps = {
+  adornment: false,
+  placeHolder: "",
+  fullWidth: false
 }
 
 export default BasicTextField;
