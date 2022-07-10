@@ -14,7 +14,10 @@ import {
 
 import BasicTextField from "../@core/BasicTextField/BasicTextField";
 import Button from "../@core/Button/Button";
-import { signInWithGooglePopup } from "../../utilities/firebase/firebase";
+import {
+  createAuthUserDoc,
+  signInWithGooglePopup,
+} from "../../utilities/firebase/firebase";
 import { ReactComponent as GoogleIcon } from "../../assets/24 - google icon.svg";
 
 const StyledCheckBox = styled(Checkbox)({
@@ -26,7 +29,12 @@ const StyledCheckBox = styled(Checkbox)({
 function SignInForm({ setAnchorEl }) {
   const loginGoogleUser = async () => {
     const response = await signInWithGooglePopup();
-    if (response) setAnchorEl(null);
+    if (response) {
+      const { user } = response;
+      const userDocRef = await createAuthUserDoc(user);
+
+      setAnchorEl(null);
+    }
   };
 
   return (
