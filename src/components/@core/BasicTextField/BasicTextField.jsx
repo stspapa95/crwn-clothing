@@ -20,6 +20,9 @@ function BasicTextField({
   variant,
   fullWidth,
   placeHolder,
+  required,
+  error,
+  helperText,
   adornment
 }) {
   return (
@@ -30,6 +33,9 @@ function BasicTextField({
       fullWidth={fullWidth}
       autoComplete={"off"}
       placeholder={placeHolder}
+      required={required}
+      error={error}
+      helperText={helperText}
       inputProps={{
         style: {
           color: "#2D2D2D",
@@ -49,6 +55,14 @@ function BasicTextField({
           ),
         }
       }
+      FormHelperTextProps={{
+        style: {
+          fontFamily: "Gotham Book",
+          fontSize: 13,
+          fontWeight: "bold",
+          color: "#DF0006"
+        }
+      }}
       InputLabelProps={{
         style: {
           fontFamily: "Gotham Book",
@@ -62,6 +76,9 @@ function BasicTextField({
 
 BasicTextField.defaultProps = {
   adornment: false,
+  required: false,
+  error: false,
+  helperText: "",
   placeHolder: "",
   fullWidth: false
 }

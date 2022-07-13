@@ -1,17 +1,12 @@
 import React, { Fragment } from "react";
-import { Typography } from "@mui/material";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
-function SignUp() {
+function SignUpPage() {
   return (
     <Fragment>
-      <Typography
-        variant={"h1"}
-        style={{ fontFamily: "Chronicle Light, sans-serif", fontSize: 40 }}
-      >
-        Sign Up
-      </Typography>
+      <SignUpForm />
     </Fragment>
   );
 }
 
-export default SignUp;
+export default SignUpPage;
