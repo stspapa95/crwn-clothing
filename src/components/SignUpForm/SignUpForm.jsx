@@ -1,15 +1,18 @@
 import {
   Box,
   Checkbox,
-  Container,
   FormControlLabel,
   Grid,
   styled,
   Typography,
 } from "@mui/material";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import BasicTextField from "../@core/BasicTextField/BasicTextField";
 import Button from "../@core/Button/Button";
+import {
+  createAuthUserDoc,
+  createAuthUserWithEmailAndPassword,
+} from "../../utilities/firebase/firebase";
 
 const exclusiveAccessText = [
   { id: 1, name: "Product Pricing" },
@@ -25,6 +28,48 @@ const StyledCheckBox = styled(Checkbox)({
 });
 
 function SignUpForm() {
+  const [formFields, setFormFields] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
+  const { firstName, lastName, email, password } = formFields;
+  const isDisabled = firstName === "" || lastName === "" || email === "";
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormFields({ ...formFields, [name]: value });
+  };
+
+  //Clear Form Fields
+  const handleClearForm = () =>
+    setFormFields({ firstName: "", lastName: "", email: "", password: "" });
+
+  const handleSubmitForm = async () => {
+    try {
+      const response = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      if (response) {
+        await createAuthUserDoc(response.user, {
+          displayName: `${firstName} ${lastName}`,
+        });
+        handleClearForm();
+      }
+    } catch (e) {
+      if (e.code === "auth/email-already-in-use") {
+        console.log(e.message);
+      } else {
+        console.log("Error encountered during creating user!");
+      }
+      handleClearForm();
+    }
+  };
+
   return (
     <Fragment>
       <Box style={{ margin: "0 105px" }}>
@@ -37,13 +82,7 @@ function SignUpForm() {
           </Typography>
         </Box>
         <Grid container display={"flex"}>
-          <Grid
-            item
-            container
-            flexDirection={"column"}
-            lg={4.5}
-            xl={4.5}
-          >
+          <Grid item container flexDirection={"column"} lg={5} xl={5}>
             <Grid item>
               <Typography
                 style={{
@@ -64,32 +103,41 @@ function SignUpForm() {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item container flexDirection={"column"} xl={7.5} lg={7.5}>
+          <Grid item container flexDirection={"column"} xl={7} lg={7}>
             <Grid container spacing={3}>
               <Grid item lg={6} xl={6}>
                 <BasicTextField
                   fullWidth
                   label={"First Name"}
-                  error
-                  helperText={"THIS FIELD IS REQUIRED"}
+                  // error
+                  // helperText={"THIS FIELD IS REQUIRED"}
                   placeHolder={"First Name"}
+                  name={"firstName"}
+                  value={firstName}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item lg={6} xl={6}>
                 <BasicTextField
                   fullWidth
                   label={"Last Name"}
-                  error
-                  helperText={"THIS FIELD IS REQUIRED"}
+                  // error
+                  // helperText={"THIS FIELD IS REQUIRED"}
                   placeHolder={"Last Name"}
+                  name={"lastName"}
+                  value={lastName}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item lg={6} xl={6}>
                 <BasicTextField
                   fullWidth
                   label={"Email"}
-                  error
-                  helperText={"THIS FIELD IS REQUIRED"}
+                  // error
+                  // helperText={"THIS FIELD IS REQUIRED"}
+                  name={"email"}
+                  value={email}
+                  onChange={handleChange}
                   placeHolder={"Email"}
                 />
               </Grid>
@@ -98,6 +146,9 @@ function SignUpForm() {
                   fullWidth
                   label={"Password"}
                   placeHolder={"Password"}
+                  name={"password"}
+                  value={password}
+                  onChange={handleChange}
                   adornment={true}
                 />
               </Grid>
@@ -108,7 +159,7 @@ function SignUpForm() {
                     <Typography
                       style={{ fontFamily: "Gotham Book", fontSize: 14 }}
                     >
-                      By clicking "Create Login" you agree to our{" "}
+                      By clicking "Create Account" you agree to our{" "}
                       <b>Privacy Policy</b> and <b>Terms and conditions</b>.
                     </Typography>
                   }
@@ -121,8 +172,11 @@ function SignUpForm() {
                 <Button
                   title={"Create Account"}
                   fullWidth
+                  onClick={handleSubmitForm}
+                  disabled={isDisabled}
                   variant={"contained"}
                   backgroundColor={"#FFD700"}
+                  fontWeight={"bold"}
                   backgroundHover={"rgb(255, 167, 0)"}
                 />
               </Grid>

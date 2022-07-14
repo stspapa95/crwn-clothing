@@ -17,6 +17,9 @@ const StyledTextField = styled(TextField)({
 
 function BasicTextField({
   label,
+  value,
+  name,
+  onChange,
   variant,
   fullWidth,
   placeHolder,
@@ -29,7 +32,10 @@ function BasicTextField({
     <StyledTextField
       id="outlined-basic"
       label={label}
+      value={value}
+      onChange={onChange}
       variant={variant}
+      name={name}
       fullWidth={fullWidth}
       autoComplete={"off"}
       placeholder={placeHolder}
@@ -77,6 +83,9 @@ function BasicTextField({
 BasicTextField.defaultProps = {
   adornment: false,
   required: false,
+  onChange: () => {},
+  value: null,
+  name: "",
   error: false,
   helperText: "",
   placeHolder: "",

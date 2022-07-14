@@ -9,8 +9,10 @@ function Button({
   borderRadius,
   backgroundHover,
   backgroundColor,
+  fontWeight,
   fullWidth,
   variant,
+  disabled,
   startIcon,
 }) {
   const StyledButton = styled(MuiButton)({
@@ -18,6 +20,7 @@ function Button({
     backgroundColor: backgroundColor,
     padding: padding,
     borderRadius: borderRadius,
+    fontWeight: fontWeight,
     fontFamily: "Gotham Book, sans-serif",
     "&:hover": {
       background: backgroundHover,
@@ -30,6 +33,7 @@ function Button({
       onClick={onClick}
       fullWidth={fullWidth}
       variant={variant}
+      disabled={disabled}
       startIcon={startIcon || null}
     >
       {title}
@@ -40,8 +44,10 @@ function Button({
 Button.defaultProps = {
   fullWidth: false,
   variant: "text",
+  disabled: false,
   padding: "8px 16px",
   backgroundColor: "#fff",
+  fontWeight: "normal",
   backgroundHover: "transparent",
   borderRadius: 1,
   color: "#2D2D2D",
