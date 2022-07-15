@@ -68,6 +68,8 @@ function SignUpForm() {
       }
       handleClearForm();
     }
+
+
   };
 
   return (
