@@ -29,15 +29,19 @@ const StyledCheckBox = styled(Checkbox)({
 
 function SignInForm({setAnchorEl}) {
     const [formFields, setFormFields] = useState({email: "", password: ""});
+    const [showPassword, setShowPassword] = useState(false);
+    const [error, setError] = useState(null);
     const {email, password} = formFields;
 
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormFields({...formFields, [name]: value})
+        setError(null)
     };
 
-    const handleClearForm = () =>
-        setFormFields({firstName: "", lastName: "", email: "", password: ""});
+    const handleShowPassword = () => {
+        setShowPassword((prevState => !prevState))
+    };
 
     const loginGoogleUser = async () => {
         const response = await signInWithGooglePopup();
@@ -49,10 +53,19 @@ function SignInForm({setAnchorEl}) {
     };
 
     const loginWithEmailAndPassword = async () => {
-        signInAuthUserWithEmailAndPassword(email, password).then((res) => {
-            handleClearForm();
+        await signInAuthUserWithEmailAndPassword(email, password).then((res) => {
+            setTimeout(() => setAnchorEl(null), 700);
         }).catch((e) => {
-            console.log(e.message)
+            switch (e.code) {
+                case "auth/invalid-email":
+                    setError("INVALID EMAIL OR PASSWORD")
+                    break
+                case "auth/wrong-password":
+                    setError("INVALID EMAIL OR PASSWORD")
+                    break
+                default:
+                    setError("USER NOT FOUND")
+            }
         });
     };
 
@@ -80,6 +93,7 @@ function SignInForm({setAnchorEl}) {
                             value={email}
                             onChange={handleChange}
                             adornment={false}
+                            error={error && error}
                         />
                     </Grid>
                     <Grid item>
@@ -91,7 +105,12 @@ function SignInForm({setAnchorEl}) {
                             name={"password"}
                             value={password}
                             onChange={handleChange}
+                            handleShowPassword={handleShowPassword}
+                            showPassword={showPassword}
                             adornment={true}
+                            type={showPassword ? "text": "password"}
+                            error={error && error}
+                            helperText={error && error}
                         />
                     </Grid>
                     <Grid item>
